@@ -1,22 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./Search";
+import ThemeData from "./ThemeData";
+import { useState } from "react";
 function App() {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState("");
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Search setResponse={setResponse} setError={setError} />
+        {response ? <ThemeData response={response} error={error} /> : null}
       </header>
     </div>
   );
